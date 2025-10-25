@@ -14,19 +14,30 @@ Ce dossier contient le script `willkommen_v2.py` (générateur multi-langages). 
 Ouvre PowerShell dans `c:\hello-world-python\willkommen_v2` puis :
 
 ```powershell
-# 1) Créer et activer un environnement virtuel local
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
 
-# 2) Mettre pip à jour et installer les dépendances
-python -m pip install --upgrade pip
-if (Test-Path .\requirements.txt) { pip install -r .\requirements.txt }
+Privilège recommandé : lance PowerShell en mode normal (double-clique) ; si l'exécution des scripts est restreinte, il sera possible d'exécuter `run.bat`.
 
-# 3) Lancer le script interactif
-python .\willkommen_v2.py
+1) Première installation (recommandé la première fois après le clonage)
 
-# ou utiliser le script helper qui fait les étapes 1-2 automatiquement
+```powershell
+# Exécute le script de préparation qui crée le venv et installe les dépendances
+.\setup.ps1
+```
+
+2) Utilisation quotidienne
+
+```powershell
+# Lancer l'assistant interactif (utilise le venv existant ou crée le venv si absent)
 .\run.ps1
+
+# OU (double-clic possible) :
+.\run.bat
+```
+
+Notes :
+- `run.bat` utilise directement `.venv\Scripts\python.exe` pour éviter les problèmes d'activation PowerShell.
+- `run.ps1` est plus verbeux et transmet les arguments (ex: `.
+un.ps1 --help`).
 ```
 
 Si l'exécution des scripts PowerShell est bloquée :
