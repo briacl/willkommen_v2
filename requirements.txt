@@ -1,0 +1,9 @@
+# Dépendances nécessaires pour `willkommen_v2.py`
+# Rich: affichage formaté dans la console
+# Questionary: prompts interactifs
+rich>=13.0.0
+questionary>=1.10.0
+
+# Si tu veux fixer des versions précises, remplace par ex:
+# rich==13.7.1
+# questionary==1.10.0
