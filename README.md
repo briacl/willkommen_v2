@@ -50,13 +50,42 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## Installation & exécution (Linux / macOS)
 
+La méthode recommandée sur macOS (et Linux) est d'utiliser le script `run.sh` fourni :
+
 ```bash
+# Rendre le helper exécutable (une seule fois)
+chmod +x run.sh
+
+# Puis lancer le helper qui va :
+# - créer le venv si absent
+# - installer/mettre à jour pip et les dépendances
+# - exécuter le script dans le venv
+./run.sh
+```
+
+Si vous préférez faire les étapes manuellement :
+
+```bash
+# Créer et activer un venv (ou utilisez directement le binaire du venv)
 python3 -m venv .venv
-source .venv/bin/activate
+. .venv/bin/activate        # active le venv pour la session shell
+
+# Mettre pip à jour et installer les dépendances
 python -m pip install --upgrade pip
-[ -f requirements.txt ] && pip install -r requirements.txt
+python -m pip install -r requirements.txt
+
+# Lancer l'outil dans le venv
 python willkommen_v2.py
-# ou ./run.sh
+```
+
+Remarques :
+- Le script `run.sh` utilise explicitement le binaire `.venv/bin/python` pour fiabilité (évite les différences d'activation selon le shell).
+- Si vous préférez ne pas activer le venv dans le shell, vous pouvez appeler directement `.venv/bin/python` pour installer/exécuter :
+
+```bash
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python willkommen_v2.py
 ```
 
 ---
